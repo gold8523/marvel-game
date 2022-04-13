@@ -1,7 +1,7 @@
 import Container from "../Container";
 import Heading from "../Heading";
 
-import s from "./Slyder.module.css";
+import s from "./Slider.module.css";
 
 const Slider = () => {
   return (
