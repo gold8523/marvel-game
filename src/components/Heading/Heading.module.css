@@ -1,13 +1,13 @@
 .root {
   margin: 0;
   padding: 0;
-  color: #fff;
+  color: #000000d9;
   margin-bottom: 0.5em;
   font-weight: 600;
 }
 
-.colorBlack {
-  color: #000000d9;
+.color {
+  color: #fff;
 }
 
 h1 {

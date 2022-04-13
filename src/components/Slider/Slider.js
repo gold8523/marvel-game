@@ -8,13 +8,13 @@ const Slider = () => {
     <section className={s.section}>
       <div className={s.slider}>
         <Container className={s.sliderContent}>
-          <Heading level={1}>
+          <Heading level={1} >
             This is header!
           </Heading>
           <Heading 
             level={2} 
             className={s.subheader} 
-            black
+            white
           >
             Wow.Wow.Wow
           </Heading>

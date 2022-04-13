@@ -3,11 +3,11 @@ import propTypes from 'prop-types';
 import cn from 'classnames';
 import s from './Heading.module.css';
 
-const Heading = ({ level, className, black, children }) => {
+const Heading = ({ level, className, white, children }) => {
     const el = `h${level}`;
     return React.createElement(el, {
         className: cn(s.root, className, {
-            [s.colorBlack]: black
+            [s.color]: white
         })
     }, children)
 }
