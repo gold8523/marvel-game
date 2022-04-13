@@ -1,18 +1,18 @@
-import s from "./style.module.css";
 
-import logoPng from "../../assets/logo.png";
+import s from "./Header.module.css";
 import Container from "../Container";
 
+import logoPng from "../../assets/logo.png";
 
 const Header = () => {
   const menuList = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
 
   return (
     <header className={s.root}>
-      <div className={s.header}>
-        <Container>
+      <Container>
+        <div className={s.header}>
           <div className={s.logo}>
-            <img src={logoPng} alt="logo"/>
+            <img src={logoPng} alt="logo" />
           </div>
           <ul className={s.nav}>
             {menuList.map((item) => (
@@ -21,8 +21,8 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          </Container>
-      </div>
+        </div>
+      </Container>
     </header>
   );
 };

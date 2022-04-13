@@ -1,5 +1,6 @@
+import propTypes from 'prop-types';
 import cn from 'classnames';
-import s from './style.module.css';
+import s from './Container.module.css';
 
 const Container = ({children, className}) => {
     return (
@@ -8,5 +9,10 @@ const Container = ({children, className}) => {
         </div>
     );
 }
- 
+
+Container.propTypes = {
+    children: propTypes.node,
+    className: propTypes.string
+}
+
 export default Container;
