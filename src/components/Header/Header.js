@@ -1,4 +1,3 @@
-
 import s from "./Header.module.css";
 import Container from "../Container";
 
@@ -9,8 +8,8 @@ const Header = () => {
 
   return (
     <header className={s.root}>
-      <Container>
-        <div className={s.header}>
+      <div className={s.header}>
+        <Container>
           <div className={s.logo}>
             <img src={logoPng} alt="logo" />
           </div>
@@ -21,8 +20,8 @@ const Header = () => {
               </li>
             ))}
           </ul>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </header>
   );
 };
