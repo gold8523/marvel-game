@@ -4,7 +4,6 @@ import './index.css';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
-// import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
