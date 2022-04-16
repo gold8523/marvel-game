@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './Text.module.css';
 
 const Text = ({
@@ -27,12 +27,12 @@ Text.defaultProp = {
 }
 
 Text.propTypes = {
-    element: propTypes.oneOf(['div', 'p', 'span']).isRequired,
-    children: propTypes.node,
-    className: propTypes.string,
-    strong: propTypes.bool,
-    italic: propTypes.bool,
-    disabled: propTypes.bool
+    element: PropTypes.oneOf(['div', 'p', 'span']).isRequired,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    strong: PropTypes.bool,
+    italic: PropTypes.bool,
+    disabled: PropTypes.bool
 }
 
 export default Text;

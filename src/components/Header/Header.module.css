@@ -2,6 +2,11 @@
   height: 80px;
 }
 
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .header {
   height: 80px;
   width: 100%;
