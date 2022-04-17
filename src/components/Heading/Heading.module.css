@@ -4,6 +4,8 @@
   color: #000000d9;
   margin-bottom: 0.5em;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
 }
 
 .color {

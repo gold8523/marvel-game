@@ -8,7 +8,10 @@ const Slider = () => {
     <section className={s.section}>
       <div className={s.slider}>
         <Container className={s.sliderContent}>
-          <Heading level={1} >
+          <Heading 
+            level={1} 
+            white 
+          >
             This is header!
           </Heading>
           <Heading 
