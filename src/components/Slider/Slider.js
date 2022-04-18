@@ -1,7 +1,7 @@
 import Container from "../Container";
 import Heading from "../Heading";
 
-import s from "./Slider.module.css";
+import s from "./Slider.module.scss";
 
 const Slider = () => {
   return (
@@ -10,7 +10,8 @@ const Slider = () => {
         <Container className={s.sliderContent}>
           <Heading 
             level={1} 
-            white 
+            white
+            backLine
           >
             This is header!
           </Heading>

@@ -1,6 +1,6 @@
 import propTypes from 'prop-types';
 import cn from 'classnames';
-import s from './Container.module.css';
+import s from './Container.module.scss';
 
 const Container = ({ children, className }) => {
     return (
