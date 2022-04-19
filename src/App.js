@@ -87,17 +87,17 @@ function App() {
   const [likeChar, setLikeChar] = useState(CHARACTER);
 
   const handleClickLike = (id) => {
-    console.log('>>>>>', likeChar);
     setLikeChar(prevState => prevState.reduce((acc, item) => {
         if (item.id === id) {
-          console.log('>>> item isLike', item.name);
-          item.isLike = !item.isLike;
+          item = {
+            ...item,
+            isLike : !item.isLike
+          }
         }
         acc.push(item);
         return acc;
       }, [])
     )}
-
   return (
     <div className="App">
       <Header />
@@ -111,7 +111,7 @@ function App() {
             <Heading level={2}>Collect your best five</Heading>
           </div>
           <div className={s.cardWrap}>
-            {CHARACTER.map((item, key) => {
+            {likeChar.map((item) => {
               return (
                 <div key={item.id}>
                   <CharacterCard
