@@ -5,6 +5,9 @@ import Button from '../Button';
 import s from "./Slider.module.scss";
 
 const Slider = () => {
+  const handleClickButton = () => {
+    console.log('>>>> click')
+  }
   
   return (
     <section className={s.section}>
@@ -26,7 +29,7 @@ const Slider = () => {
           </Heading>
 
           <div className={s.call}>
-            <Button>
+            <Button isClick={handleClickButton}>
               Wow
             </Button>
           </div>

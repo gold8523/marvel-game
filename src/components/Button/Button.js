@@ -1,4 +1,4 @@
-import PropsType from 'prop-types';
+import PropsTypes from 'prop-types';
 import cn from 'classnames';
 
 import s from './Button.module.scss';
@@ -18,7 +18,8 @@ const Button = ({black, children, isClick}) => {
 }
 
 Button.propTypes = {
-  black: PropsType.bool
+  black: PropsTypes.bool,
+  isClick: PropsTypes.func.isRequired
 }
 
 export default Button;
