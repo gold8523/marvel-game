@@ -5,26 +5,54 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import s from './BiographyPage.module.scss';
 
-import BIO from './Bio';
+import { BIO } from './Bio'
 
 const BiographyPage = ({id, isBack}) => {
   const handleClickButton = () => {
     isBack();
   }
 
+console.log(BIO[id])
+
   return ( 
     <div className={s.root} > 
-      <Container>
+      <Container className={s.button}>
         <Button black isClick={handleClickButton}>
             Go Back
         </Button>
       </Container>
-      <Heading level={1} >
-        Biograpy Page
-      </Heading>
-      {
-        console.log(BIO)
-      }
+      <Container>
+        {
+          BIO[id].map((item, key) => {
+            switch(item.type) {
+              case 'h1': 
+                return (
+                  <Heading level={1} className={s.heading}>
+                    {item.text}
+                  </Heading>
+                )
+                case 'h2': 
+                  return (
+                    <Heading level={2} className={s.heading}>
+                      {item.text}
+                    </Heading>
+                  )
+                  case 'paragraph': 
+                    return (
+                      <Text element='p' className={s.paragraph}>
+                        {item.text}
+                      </Text>
+                    )
+                  case 'img':
+                    return (
+                      <img src={item.src} alt="biograpy image" className={s.img}/>
+                    )
+              default: return
+            }
+          })
+        }
+      </Container>
+      
     </div>
   );
 }
