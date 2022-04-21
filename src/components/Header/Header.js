@@ -1,14 +1,28 @@
-import s from "./Header.module.scss";
+import cn from 'classnames'
 import Container from "../Container";
+import { useEffect, useState } from "react";
+
+import s from "./Header.module.scss";
 
 import logoPng from "../../assets/logo.png";
 
 const Header = () => {
+  const [isSmall, setSmall] = useState(false);
   const menuList = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
+  
+  useEffect(() => {
+    window.addEventListener('scroll', (e)=> {
+      let scY = window.scrollY 
+      scY >= 60 ? setSmall(true) : setSmall(false)
+      console.log(scY)
+    })
+  }, [])
 
   return (
     <header className={s.root}>
-      <div className={s.header}>
+      <div className={cn(s.header, {
+      [s.small]: isSmall
+    })}>
         <Container className={s.headerWrap}>
           <div className={s.logo}>
             <img src={logoPng} alt="logo" />
