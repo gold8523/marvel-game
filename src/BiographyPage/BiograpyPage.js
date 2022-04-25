@@ -10,7 +10,7 @@ import { BIO } from './Bio'
 const BiographyPage = ({id, isBack}) => {
 
   const handleClickButton = () => {
-    isBack();
+    isBack(null);
   }
 
   return ( 

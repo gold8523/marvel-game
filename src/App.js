@@ -86,36 +86,29 @@ const CHARACTER = [
 
 function App() {
   const [likeChar, setLikeChar] = useState(CHARACTER);
-  const [showBio, setShowBio] = useState(false);
-  const [charId, setCharId] = useState();
+  const [charId, setCharId] = useState(null);
 
   const handleClickLike = (id) => {
-    setLikeChar(prevState => prevState.reduce((acc, item) => {
+    setLikeChar(prevState => prevState.map((item, key) => {
         if (item.id === id) {
           item = {
             ...item,
             isLike : !item.isLike
           }
         }
-        acc.push(item);
-        return acc;
-      }, [])
+        return item;
+      })
     )}
 
   const handelShowBio = (id) => {
     setCharId(id);
-    setShowBio(prevState => !prevState)
-  }
-
-  const handleHideBio = () => {
-    setShowBio(prevState => !prevState)
   }
   
   return (
     <div className="App">
       <Header />
         {
-          showBio? <BiographyPage id={charId} isBack={handleHideBio}/> : 
+          charId? <BiographyPage id={charId} isBack={handelShowBio}/> : 
           <>
             <Slider />
             <section className={s.cardSection}>
