@@ -87,16 +87,15 @@ function App() {
   const [likeChar, setLikeChar] = useState(CHARACTER);
 
   const handleClickLike = (id) => {
-    setLikeChar(prevState => prevState.reduce((acc, item) => {
+    setLikeChar(prevState => prevState.map((item, key) => {
         if (item.id === id) {
           item = {
             ...item,
             isLike : !item.isLike
           }
         }
-        acc.push(item);
-        return acc;
-      }, [])
+        return item;
+      })
     )}
   return (
     <div className="App">
