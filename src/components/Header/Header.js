@@ -14,7 +14,6 @@ const Header = () => {
     window.addEventListener('scroll', (e)=> {
       let scY = window.scrollY 
       scY >= 60 ? setSmall(true) : setSmall(false)
-      console.log(scY)
     })
   }, [])
 

@@ -8,11 +8,10 @@ import s from './BiographyPage.module.scss';
 import { BIO } from './Bio'
 
 const BiographyPage = ({id, isBack}) => {
+
   const handleClickButton = () => {
     isBack();
   }
-
-console.log(BIO[id])
 
   return ( 
     <div className={s.root} > 
