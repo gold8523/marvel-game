@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import { Link } from 'react-router-dom';
 import Container from "../Container";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,25 @@ import logoPng from "../../assets/logo.png";
 
 const Header = () => {
   const [isSmall, setSmall] = useState(false);
-  const menuList = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
+  const menuList = [
+    {
+      link: `Main`,
+      url: `/`
+    },
+    {
+      link: `Characters`,
+      url: `/characters`
+    },
+    {
+      link: `About Game`,
+      url: `/about_game`
+    },
+    {
+      link: `Contacts`,
+      url: `/contacts`
+    },
+    
+  ];
   
   useEffect(() => {
     window.addEventListener('scroll', (e)=> {
@@ -29,7 +48,7 @@ const Header = () => {
           <ul className={s.nav}>
             {menuList.map((item, index) => (
               <li key={index}>
-                <a href="#">{item}</a>
+                <Link to={item.url}>{item.link}</Link>
               </li>
             ))}
           </ul>

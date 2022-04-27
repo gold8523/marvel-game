@@ -45,7 +45,7 @@ createComponents.then(async (dirPath) => {
 
   return dirPath;
 }).then(async (dirPath) => {
-  await fs.writeFile(`${dirPath}/${componentName}.module.scss`, ".root {/n/n}", (err) => {
+  await fs.writeFile(`${dirPath}/${componentName}.module.scss`, ".root {}", (err) => {
     if(err !== null) {
       Promise.reject(err);
     }

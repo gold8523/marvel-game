@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import Button from '../components/Button';
-import Container from '../components/Container';
-import Heading from '../components/Heading';
-import Text from '../components/Text';
+import Button from '../../components/Button';
+import Container from '../../components/Container';
+import Heading from '../../components/Heading';
+import Text from '../../components/Text';
 import s from './BiographyPage.module.scss';
 
-import { BIO } from './Bio'
+import { BIO } from '../../constants/Bio'
 
 const BiographyPage = ({id, isBack}) => {
 
@@ -22,12 +22,12 @@ const BiographyPage = ({id, isBack}) => {
       </Container>
       <Container>
         {
-          BIO[id].map((item, key) => {
+          BIO[id].map((item, index) => {
             switch(item.type) {
               case 'h1': 
               case 'h2': 
                 return (
-                  <Heading level={Number(item.type.slice(1))} className={s.heading}>
+                  <Heading key={index} level={Number(item.type.slice(1))} className={s.heading}>
                     {item.text}
                   </Heading>
                 )
@@ -38,13 +38,13 @@ const BiographyPage = ({id, isBack}) => {
                   // )
               case 'paragraph': 
                 return (
-                  <Text element='p' className={s.paragraph}>
+                  <Text key={index} element='p' className={s.paragraph}>
                     {item.text}
                   </Text>
                 )
               case 'img':
                 return (
-                  <img src={item.src} alt="biograpy image" className={s.img}/>
+                  <img key={index} src={item.src} alt="biograpy image" className={s.img}/>
                 )
               default: return
             }
