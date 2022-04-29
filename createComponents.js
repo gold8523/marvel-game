@@ -1,52 +1,52 @@
 const fs = require('fs');
 
-const componentDir = process.argv[2]
-const componentName = process.argv[3];
+const componentName = process.argv[2];
+const componentPath = process.argv[3];
 
-const componetTemplate = `import s from './${componentName}.module.scss';
+const componentTemplate = `import s from './${componentName}.module.scss';
+
 const ${componentName} = () => {
   return (
     <div className={s.root}>
-    
+      
     </div>
   );
-}
- 
+};
+
 export default ${componentName};`;
 
 const indexTemplate = `import ${componentName} from './${componentName}';
 
-export default ${componentName};`
+export default ${componentName};`;
 
-const createComponents = new Promise((resolve, reject ) => {
-  const path = `./src/${componentDir}/${componentName}`;
+const createComponents = new Promise((resolve, reject) => {
+  const path = `./src/${componentPath}/${componentName}`;
 
-  if(fs.existsSync(path)) {
-    reject('Component is exist');
+  if (fs.existsSync(path)) {
+    reject('Components is exist');
   }
 
-  fs.mkdir(path, {recursive: true}, (err) => {
-    if(err !== null) {
+  fs.mkdir(path, { recursive: true}, (err) => {
+    if (err !== null) {
       reject(err);
-      console.log('Ooops', err);
     } else {
       resolve(path);
     }
   });
 });
 
-console.log('>>>>: Start creating component');
+console.log(`>>>>: Я начал создавать компонент ${componentName}`);
 createComponents.then(async (dirPath) => {
-  await fs.writeFile(`${dirPath}/${componentName}.js`, componetTemplate, (err) => {
-    if(err !== null) {
+  await fs.writeFile(`${dirPath}/${componentName}.js`, componentTemplate, (err) => {
+    if (err !== null) {
       Promise.reject(err);
     }
   });
 
   return dirPath;
 }).then(async (dirPath) => {
-  await fs.writeFile(`${dirPath}/${componentName}.module.scss`, ".root {}", (err) => {
-    if(err !== null) {
+  await fs.writeFile(`${dirPath}/${componentName}.module.scss`, ".root {\n\n}", (err) => {
+    if (err !== null) {
       Promise.reject(err);
     }
   });
@@ -54,14 +54,16 @@ createComponents.then(async (dirPath) => {
   return dirPath;
 }).then(async (dirPath) => {
   await fs.writeFile(`${dirPath}/index.js`, indexTemplate, (err) => {
-    if(err !== null) {
-      Promise.reject(err);
+    if (err !== null) {
+      console.log('Something wrong ', err);
     }
   });
-
-  return dirPath;
+  console.log(`>>>>: Я закончил создавать компонент ${componentName}, его вы найдете по пути ${dirPath}`);
 }).catch((err) => {
-  console.log('THIS IS ERROR - ', err);
+  console.log('####: THIS IS ERROR - ', err);
 })
 
-console.log('>>>>: Component created');
+
+
+
+

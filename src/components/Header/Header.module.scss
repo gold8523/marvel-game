@@ -32,6 +32,9 @@
   height: 70px;
   width: 125px;
   display: flex;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .nav {

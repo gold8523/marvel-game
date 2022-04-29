@@ -1,25 +1,22 @@
 import PropTypes from 'prop-types';
+
 import Button from '../../components/Button';
 import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
+
+import { useParams } from 'react-router-dom';
+
 import s from './BiographyPage.module.scss';
 
 import { BIO } from '../../constants/Bio'
 
-const BiographyPage = ({id, isBack}) => {
-
-  const handleClickButton = () => {
-    isBack(null);
-  }
+const BiographyPage = () => {
+  const {id} = useParams();
 
   return ( 
     <div className={s.root} > 
-      <Container className={s.button}>
-        <Button black isClick={handleClickButton}>
-            Go Back
-        </Button>
-      </Container>
+      
       <Container>
         {
           BIO[id].map((item, index) => {
@@ -56,9 +53,6 @@ const BiographyPage = ({id, isBack}) => {
   );
 }
 
-BiographyPage.propTypes = {
-  id: PropTypes.number,
-  isBack: PropTypes.func
-}
+BiographyPage.propTypes = {}
 
 export default BiographyPage;

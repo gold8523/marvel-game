@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from "../Container";
 import { useEffect, useState } from "react";
 
@@ -9,22 +9,23 @@ import logoPng from "../../assets/logo.png";
 
 const Header = () => {
   const [isSmall, setSmall] = useState(false);
+  const navigate = useNavigate();
   const menuList = [
     {
-      link: `Main`,
-      url: `/`
+      link: 'Main',
+      url: '/'
     },
     {
-      link: `Characters`,
-      url: `/characters`
+      link: 'Characters',
+      url: '/characters'
     },
     {
-      link: `About Game`,
-      url: `/about_game`
+      link: 'About game',
+      url: '/about_game'
     },
     {
-      link: `Contacts`,
-      url: `/contacts`
+      link: 'Contacts',
+      url: '/contacts'
     },
     
   ];
@@ -36,13 +37,17 @@ const Header = () => {
     })
   }, [])
 
+  const handleClickLogo = () => {
+    navigate('/');
+  }
+
   return (
     <header className={s.root}>
       <div className={cn(s.header, {
       [s.small]: isSmall
     })}>
         <Container className={s.headerWrap}>
-          <div className={s.logo}>
+          <div className={s.logo} onClick={handleClickLogo}>
             <img src={logoPng} alt="logo" />
           </div>
           <ul className={s.nav}>
