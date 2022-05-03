@@ -6,11 +6,16 @@ import {ReactComponent as Heart} from './assets/heart.svg'
 
 import s from "./CharacterCard.module.scss";
 
-const CharacterCard = ({id, name, src, humanName, description, isLike, likeClick}) => {
+const CharacterCard = ({id, name, src, humanName, description, isLike, likeClick, isShowBio}) => {
   
   const handleLike = () => {
     likeClick(id);
   }
+
+  const handleReadBio = () => {
+    isShowBio(id)
+  }
+
   return (
   <>
     <div className={s.root}>
@@ -31,8 +36,8 @@ const CharacterCard = ({id, name, src, humanName, description, isLike, likeClick
           })} onClick={handleLike}>
             <Heart />
           </div>
-          <div className={s.readBio}>
-            <a href="#">Read bio</a>
+          <div className={s.readBio} >
+            <a href="#" onClick={handleReadBio}>Read bio</a>
           </div>
         </div>
       </div>
@@ -48,7 +53,8 @@ CharacterCard.propTypes = {
   humanName: PropTypes.string,
   description: PropTypes.string,
   isLike: PropTypes.bool,
-  likeClick: PropTypes.func
+  likeClick: PropTypes.func,
+  showBio: PropTypes.func
 }
 
 export default CharacterCard;

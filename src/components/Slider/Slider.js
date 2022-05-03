@@ -1,9 +1,14 @@
 import Container from "../Container";
 import Heading from "../Heading";
+import Button from '../Button';
 
 import s from "./Slider.module.scss";
 
 const Slider = () => {
+  const handleClickButton = () => {
+    console.log('>>>> click')
+  }
+  
   return (
     <section className={s.section}>
       <div className={s.slider}>
@@ -24,7 +29,9 @@ const Slider = () => {
           </Heading>
 
           <div className={s.call}>
-            <button className={s.button}>Wow</button>
+            <Button onClick={handleClickButton}>
+              Wow
+            </Button>
           </div>
         </Container>
       </div>
