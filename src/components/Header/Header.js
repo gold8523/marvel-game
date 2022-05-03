@@ -11,11 +11,14 @@ const Header = () => {
   const menuList = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
   
   useEffect(() => {
-    window.addEventListener('scroll', (e)=> {
-      let scY = window.scrollY 
-      scY >= 60 ? setSmall(true) : setSmall(false)
+    window.addEventListener('scroll', (e) => {
+      setSmall(window.scrollY >= 60)
     })
   }, [])
+
+  window.removeEventListener('scroll', () => {
+    setSmall(false);
+  });
 
   return (
     <header className={s.root}>
