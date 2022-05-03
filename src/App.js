@@ -8,8 +8,6 @@ import BiographyPage from "./pages/BiographyPage";
 import s from "./App.module.scss";
 import Layout from "./components/Layout/Layout";
 
-
-
 function App() {
   
   return (
