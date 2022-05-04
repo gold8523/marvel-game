@@ -15,12 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>} >
           <Route index element={<MainPage />} />
-          <Route path="characters" element={<CharactersPage />}>
-            <Route path="biography/:id" element={<BiographyPage />} />
-          </Route>
+          <Route path="characters" element={<CharactersPage />} />
+          <Route path="characters/:id" element={<BiographyPage />} />
           <Route path="about_game" element={<AboutGamePage />} />
           <Route path="contacts" element={<ContactsPage />} />
-          <Route path="biography/:id" element={<BiographyPage />} />
         </Route>
       </Routes>
     </div>
