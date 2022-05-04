@@ -1,11 +1,9 @@
-import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 import s from './AboutGamePage.module.scss';
 const AboutGamePage = () => {
   return (
     <div className={s.root}>
-      <Container>
         <Heading level={1} className={s.header}>
           About game
         </Heading>
@@ -34,7 +32,6 @@ const AboutGamePage = () => {
         <Text element='p'>
           If the grid is filled with cards, and both players possess an equal number of cards of their color, a Draw will occur. Depending on the rules in play, the game may end here, with no cards exchanged. Or, it may result in a sudden death scenario where the grid is cleared, and the game is played until one player wins. Again, depending on the rules in effect, the winner will claim a prize of one of the loser's card.
         </Text>
-      </Container>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Container from "../Container";
 import { useEffect, useState } from "react";
 
@@ -12,30 +12,33 @@ const Header = () => {
   const navigate = useNavigate();
   const menuList = [
     {
-      link: 'Main',
-      url: '/'
+      title: 'Main',
+      href: '/'
     },
     {
-      link: 'Characters',
-      url: '/characters'
+      title: 'Characters',
+      href: '/characters'
     },
     {
-      link: 'About game',
-      url: '/about_game'
+      title: 'About game',
+      href: '/about_game'
     },
     {
-      link: 'Contacts',
-      url: '/contacts'
+      title: 'Contacts',
+      href: '/contacts'
     },
     
   ];
   
   useEffect(() => {
     window.addEventListener('scroll', (e)=> {
-      let scY = window.scrollY 
-      scY >= 60 ? setSmall(true) : setSmall(false)
+      setSmall(window.scrollY >= 60)
     })
   }, [])
+
+  window.removeEventListener('scroll', () => {
+    setSmall(false);
+  })
 
   const handleClickLogo = () => {
     navigate('/');
@@ -53,7 +56,14 @@ const Header = () => {
           <ul className={s.nav}>
             {menuList.map((item, index) => (
               <li key={index}>
-                <Link to={item.url}>{item.link}</Link>
+                <NavLink 
+                  to={item.href}
+                  className={({isActive}) => {
+                    return isActive ? s.active : null;
+                  }}
+                  >
+                  {item.title}
+                </NavLink>
               </li>
             ))}
           </ul>

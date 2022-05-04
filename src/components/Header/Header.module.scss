@@ -62,6 +62,10 @@
   padding: 21px;
   color: initial;
   text-decoration: initial;
+
+  &.active {
+    color: red;
+  }
 }
 
 .header.small .logo {

@@ -29,7 +29,7 @@ const Slider = () => {
           </Heading>
 
           <div className={s.call}>
-            <Button isClick={handleClickButton}>
+            <Button onClick={handleClickButton}>
               Wow
             </Button>
           </div>

@@ -5,7 +5,7 @@ import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import s from './BiographyPage.module.scss';
 
@@ -13,11 +13,25 @@ import { BIO } from '../../constants/Bio'
 
 const BiographyPage = () => {
   const {id} = useParams();
+  const navigate = useNavigate();
 
+  const handleGoBackClick = () => {
+    navigate(-1);
+  }
+
+  if(!BIO[id]) {
+    return <Navigate to="/characters" replace />
+  }
   return ( 
     <div className={s.root} > 
       
       <Container>
+        <div className={s.button}>
+          <Button black 
+          onClick={handleGoBackClick}>
+            Go back!
+          </Button>
+        </div>
         {
           BIO[id].map((item, index) => {
             switch(item.type) {

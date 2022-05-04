@@ -3,9 +3,9 @@ import cn from 'classnames';
 
 import s from './Button.module.scss';
 
-const Button = ({black, children, isClick}) => {
+const Button = ({black, children, onClick}) => {
   const handleButtonClick = () => {
-    isClick();
+    onClick && onClick();
   }
 
   return (
@@ -19,7 +19,7 @@ const Button = ({black, children, isClick}) => {
 
 Button.propTypes = {
   black: PropsTypes.bool,
-  isClick: PropsTypes.func.isRequired
+  onClick: PropsTypes.func.isRequired
 }
 
 export default Button;
