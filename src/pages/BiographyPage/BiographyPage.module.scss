@@ -12,6 +12,25 @@
 
 .heading {
   margin: 10px 0;
+
+}
+
+.anchor {
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  svg {
+    display: none;
+    width: 20px;
+    height: 20px;
+    fill: rgba(168, 168, 168, 1.0);
+  }
+  &:hover {
+    svg {
+      display: block;
+    }
+  }
 }
 
 .paragraph {
