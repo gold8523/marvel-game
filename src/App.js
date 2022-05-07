@@ -14,11 +14,10 @@ import s from "./App.module.scss";
 
 function App() {
   const location = useLocation();
-  console.log('loc', location)
   
   useEffect(() => {
     const elem = location.hash !== "" && document.getElementById(location.hash.replace('%20', ' '));
-    console.log('## elem', elem);
+
     location.hash ? 
       elem.scrollIntoView({
         block: 'center',

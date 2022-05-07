@@ -31,14 +31,17 @@ const Header = () => {
   ];
   
   useEffect(() => {
-    window.addEventListener('scroll', (e)=> {
+    const smallHeader = () => {
       setSmall(window.scrollY >= 60)
-    })
+    }
+    window.addEventListener('scroll', smallHeader)
+
+    return () => {
+      console.log('remove listener');
+      window.removeEventListener('scroll', smallHeader)
+    }
   }, [])
 
-  window.removeEventListener('scroll', () => {
-    setSmall(false);
-  })
 
   const handleClickLogo = () => {
     navigate('/');
