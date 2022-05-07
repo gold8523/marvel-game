@@ -32,6 +32,9 @@
   height: 70px;
   width: 125px;
   display: flex;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .nav {
@@ -59,6 +62,10 @@
   padding: 21px;
   color: initial;
   text-decoration: initial;
+
+  &.active {
+    color: red;
+  }
 }
 
 .header.small .logo {
