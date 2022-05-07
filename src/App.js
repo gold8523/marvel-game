@@ -5,11 +5,26 @@ import AboutGamePage from './pages/AboutGamePage';
 import ContactsPage from './pages/ContactsPage';
 import BiographyPage from "./pages/BiographyPage";
 
-import s from "./App.module.scss";
 import Layout from "./components/Layout/Layout";
 import NotFound from "./pages/NotFound/NotFound";
 
+import { useEffect } from "react";
+
+import s from "./App.module.scss";
+
 function App() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    const elem = location.hash !== "" && document.getElementById(location.hash.replace('%20', ' '));
+
+    location.hash ? 
+      elem.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth'
+      }) : 
+      window.scrollTo(0, 0);
+  }, [location, location.pathname, location.hash])
   
   return (
     <div className="App">
