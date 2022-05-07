@@ -31,7 +31,8 @@ const Header = () => {
   ];
   
   useEffect(() => {
-    window.addEventListener('scroll', (e)=> {
+
+    window.addEventListener('scroll', (e) => {
       setSmall(window.scrollY >= 60)
     })
   }, [])
