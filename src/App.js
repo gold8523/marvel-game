@@ -4,6 +4,7 @@ import CharactersPage from './pages/CharactersPage';
 import AboutGamePage from './pages/AboutGamePage';
 import ContactsPage from './pages/ContactsPage';
 import BiographyPage from "./pages/BiographyPage";
+import LoginPage from './pages/LoginPage';
 
 import Layout from "./components/Layout/Layout";
 import NotFound from "./pages/NotFound/NotFound";
@@ -37,6 +38,7 @@ function App() {
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="login" element={<LoginPage/>} />
       </Routes>
     </div>
   );
