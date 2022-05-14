@@ -10,15 +10,42 @@ import { useRef, useState } from "react";
 
 const LoginPage = () => {
   const [active, setActive] = useState(false);
+  const [form, setForm] = useState(
+    {
+      email: "",
+      password: "",
+      repeat: ""
+    })
   const ref = useRef(null);
 
   const handleToggleForm = () => {
     setActive(prevState => !prevState);
   }
 
+  const handleChange = (e) => {
+    setForm(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('form submit');
+
+    if (e.target.name === 'registerForm') {
+      if (form.password !== form.repeat) {
+        return console.log('error пароли не совпадают')
+      }
+    }
+
+    console.log('###:', form);
+
+    setForm({
+      email: "",
+      password: "",
+      repeat: ""
+    });
+
+    setActive(false);
   }
 
   return (
@@ -34,14 +61,18 @@ const LoginPage = () => {
           <Heading level={1} className={s.title}>
             Login
           </Heading>
-          <form onSubmit={handleFormSubmit}>
+          <form 
+            ref={ref}
+            name="loginForm"
+            onSubmit={handleFormSubmit}
+          >
             <div className={s.inputContainer}>
-              <input type="email" id="#email" required="required" />
+              <input type="email" name="email" required="required" value={form.email} onChange={handleChange} />
               <label htmlFor="#email">Email</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.inputContainer}>
-              <input type="password" id="#password" required="required" />
+              <input type="password" name="password" required="required" value={form.password} onChange={handleChange} />
               <label htmlFor="#password">Password</label>
               <div className={s.bar}></div>
             </div>
@@ -62,17 +93,22 @@ const LoginPage = () => {
             Register
             <div className={s.close} onClick={handleToggleForm}></div>
           </Heading>
-          <form onSubmit={handleFormSubmit}>
+          <form 
+            ref={ref}
+            name="registerForm"
+            onSubmit={handleFormSubmit}
+          >
             <div className={s.inputContainer}>
-              <input type="email" id="#signup-email" required="required" />
+              <input type="email" name="email" required="required" value={form.email} onChange={handleChange}/>
               <label htmlFor="#signup-email">Email</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.inputContainer}>
               <input
                 type="password"
-                id="#signup-password"
+                name="password"
                 required="required"
+                value={form.password} onChange={handleChange}
               />
               <label htmlFor="#signup-password">Password</label>
               <div className={s.bar}></div>
@@ -80,8 +116,9 @@ const LoginPage = () => {
             <div className={s.inputContainer}>
               <input
                 type="password"
-                id="#signup-repeat-password"
+                name="repeat"
                 required="required"
+                value={form.repeat} onChange={handleChange}
               />
               <label htmlFor="#signup-repeat-password">Repeat Password</label>
               <div className={s.bar}></div>
