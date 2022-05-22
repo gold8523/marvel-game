@@ -6,30 +6,39 @@ import { ReactComponent as Pen } from './assets/icon-pen.svg'
 import s from "./LoginPage.module.scss";
 
 import logo from "../../assets/logo.png";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, Component} from "react";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
 const LoginPage = () => {
   const [active, setActive] = useState(false);
   const [form, setForm] = useState(
     {
-      email: "",
-      password: "",
-      repeat: ""
+      email: '',
+      password: '',
+      repeat: ''
     })
+  
+  // const [onSendForm, setSetForm] = useState(false);
   const ref = useRef(null);
 
   const handleToggleForm = () => {
     setActive(prevState => !prevState);
   }
 
-  const handleChange = (e) => {
+  const handleChange = (data) => {
+    console.log('data', data)
     setForm(prevState => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      email: data.email,
+      password: data.password,
+      repeat: data.repeat
     }))
   }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log('send');
 
     if (e.target.name === 'registerForm') {
       if (form.password !== form.repeat) {
@@ -37,13 +46,17 @@ const LoginPage = () => {
       }
     }
 
-    console.log('###:', form);
+    console.log('### page:', form);
+
+    // localStorage.removeItem('email');
+    // localStorage.removeItem('password');
+    // localStorage.removeItem('repeat');
 
     setForm({
-      email: "",
-      password: "",
-      repeat: ""
-    });
+      email: '',
+      password: '',
+      repeat: ''
+    })
 
     setActive(false);
   }
@@ -67,19 +80,19 @@ const LoginPage = () => {
             onSubmit={handleFormSubmit}
           >
             <div className={s.inputContainer}>
-              <input type="email" name="email" required="required" value={form.email} onChange={handleChange} />
+              <Input type="email" name="email" required value={form.email} onChange={handleChange} />
               <label htmlFor="#email">Email</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.inputContainer}>
-              <input type="password" name="password" required="required" value={form.password} onChange={handleChange} />
+              <Input type="password" name="password" required value={form.password} onChange={handleChange} />
               <label htmlFor="#password">Password</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.buttonContainer}>
-              <button>
-                <span>Go</span>
-              </button>
+              <Button>
+                Go
+              </Button>
             </div>
           </form>
         </div>
@@ -99,27 +112,17 @@ const LoginPage = () => {
             onSubmit={handleFormSubmit}
           >
             <div className={s.inputContainer}>
-              <input type="email" name="email" required="required" value={form.email} onChange={handleChange}/>
+              <Input type="email" name="email" required value={form.email} />
               <label htmlFor="#signup-email">Email</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.inputContainer}>
-              <input
-                type="password"
-                name="password"
-                required="required"
-                value={form.password} onChange={handleChange}
-              />
+              <Input type="password" name="password" required value={form.email} />
               <label htmlFor="#signup-password">Password</label>
               <div className={s.bar}></div>
             </div>
             <div className={s.inputContainer}>
-              <input
-                type="password"
-                name="repeat"
-                required="required"
-                value={form.repeat} onChange={handleChange}
-              />
+              <Input type="password" name="repeat" required value={form.email} />
               <label htmlFor="#signup-repeat-password">Repeat Password</label>
               <div className={s.bar}></div>
             </div>

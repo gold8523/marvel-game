@@ -12,14 +12,16 @@ const Button = ({black, children, onClick}) => {
     <button className={cn(s.root, {
       [s.black]: black
     })} onClick={handleButtonClick}>
-      {children}
+      <span>
+        {children}
+      </span>
     </button>
   );
 }
 
 Button.propTypes = {
   black: PropsTypes.bool,
-  onClick: PropsTypes.func.isRequired
+  onClick: PropsTypes.func
 }
 
 export default Button;
