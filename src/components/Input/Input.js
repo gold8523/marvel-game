@@ -4,13 +4,12 @@ import { useState, useRef, useEffect } from 'react';
 import s from './Input.module.scss';
 
 const Input = ({type, name, required, value, onChange}) => {
-  const [inputValue, setInputValue] = useState('');
-  const ref = useRef(null);
+  // const [inputValue, setInputValue] = useState(value);
 
   const handleChangeInput = (e) => {
-    setInputValue(value);
-    // localStorage.setItem(`${e.target.name}`, e.target.value);
-    onChange && onChange({[e.target.name]: e.target.value});
+    // setInputValue(value);
+    localStorage.setItem(`${e.target.name}`, e.target.value);
+    onChange && onChange();
   }
   
   return (
@@ -19,7 +18,7 @@ const Input = ({type, name, required, value, onChange}) => {
         type={type} 
         name={name} 
         required={required} 
-        value={value}
+        defaultValue={value}
         onChange={handleChangeInput} 
       />
     </>

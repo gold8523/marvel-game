@@ -6,7 +6,7 @@ import { ReactComponent as Pen } from './assets/icon-pen.svg'
 import s from "./LoginPage.module.scss";
 
 import logo from "../../assets/logo.png";
-import { useRef, useState, useEffect, Component} from "react";
+import { useRef, useState, useEffect} from "react";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 
@@ -19,25 +19,29 @@ const LoginPage = () => {
       repeat: ''
     })
   
-  // const [onSendForm, setSetForm] = useState(false);
+  useEffect(() => {
+    return () => {
+      console.log('### submit data', form);
+    }
+  }, [])
+  
   const ref = useRef(null);
 
   const handleToggleForm = () => {
     setActive(prevState => !prevState);
   }
 
-  const handleChange = (data) => {
-    console.log('data', data)
+  const handleChange = () => {
     setForm(prevState => ({
       ...prevState,
-      email: data.email,
-      password: data.password,
-      repeat: data.repeat
+      email: localStorage.getItem('email'),
+      password: localStorage.getItem('password'),
+      repeat: localStorage.getItem('repeat')
     }))
   }
 
   const handleFormSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log('send');
 
     if (e.target.name === 'registerForm') {
@@ -48,15 +52,17 @@ const LoginPage = () => {
 
     console.log('### page:', form);
 
-    // localStorage.removeItem('email');
-    // localStorage.removeItem('password');
-    // localStorage.removeItem('repeat');
+    localStorage.removeItem('email');
+    localStorage.removeItem('password')
+    localStorage.removeItem('repeat')
 
-    setForm({
-      email: '',
-      password: '',
-      repeat: ''
-    })
+    // setForm(prevState => ({
+    //   ...prevState,
+    //   email: '',
+    //   password: '',
+    //   repeat: ''
+    // }))
+
 
     setActive(false);
   }
@@ -90,7 +96,7 @@ const LoginPage = () => {
               <div className={s.bar}></div>
             </div>
             <div className={s.buttonContainer}>
-              <Button>
+              <Button type="submit">  
                 Go
               </Button>
             </div>
