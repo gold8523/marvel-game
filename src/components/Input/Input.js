@@ -4,11 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import s from './Input.module.scss';
 
 const Input = ({type, name, required, value, onChange}) => {
-  // const [inputValue, setInputValue] = useState(value);
+  // const [inputValue, setInputValue] = useState('');
 
   const handleChangeInput = (e) => {
-    // setInputValue(value);
-    localStorage.setItem(`${e.target.name}`, e.target.value);
+    // setInputValue(e.target.value);
+    localStorage.setItem(e.target.name.toString(), e.target.value);
     onChange && onChange();
   }
   
