@@ -1,7 +1,10 @@
+
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import Heading from "../Heading";
 import Text from "../Text";
+
+import { LikeContext } from '../Context/likeContext';
 
 import {ReactComponent as Heart} from './assets/heart.svg'
 

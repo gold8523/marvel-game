@@ -10,6 +10,7 @@ import Layout from "./components/Layout/Layout";
 import NotFound from "./pages/NotFound/NotFound";
 
 import { useEffect } from "react";
+import { LikeContext } from "./components/Context/likeContext";
 
 import s from "./App.module.scss";
 
@@ -28,20 +29,24 @@ function App() {
   }, [location, location.pathname, location.hash])
   
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Layout/>} >
-          <Route index element={<MainPage />} />
-          <Route path="characters" element={<CharactersPage />} />
-          <Route path="characters/:id" element={<BiographyPage />} />
-          <Route path="about_game" element={<AboutGamePage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-        <Route path="login" element={<LoginPage/>} />
-      </Routes>
-    </div>
-  );
+    <LikeContext.Provider value={{
+      like: 'like'
+    }}>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Layout/>} >
+            <Route index element={<MainPage />} />
+            <Route path="characters" element={<CharactersPage />} />
+            <Route path="characters/:id" element={<BiographyPage />} />
+            <Route path="about_game" element={<AboutGamePage />} />
+            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="login" element={<LoginPage/>} />
+        </Routes>
+      </div>
+    </LikeContext.Provider>
+    );
 }
 
 export default App;

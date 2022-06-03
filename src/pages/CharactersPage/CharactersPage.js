@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import CharacterCard from "../../components/CharacterCard";
 
 import { Outlet, useParams } from "react-router-dom";
+import { LikeContext } from "../../components/Context/likeContext";
 
 import s from "./CharactersPage.module.scss";
 
@@ -11,6 +12,7 @@ import { CHARACTER } from "../../constants/characters";
 
 const CharactersPage = () => {
   const [likeChar, setLikeChar] = useState(CHARACTER);
+  // const { likeCharContex} = useContext(LikeContext);
   const {id} = useParams();
   
   const handleClickLike = (id) => {
