@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import s from './Button.module.scss';
 
-const Button = ({black, children, onClick}) => {
+const Button = ({black, children, onClick, type}) => {
   const handleButtonClick = () => {
     onClick && onClick();
   }
@@ -11,15 +11,22 @@ const Button = ({black, children, onClick}) => {
   return (
     <button className={cn(s.root, {
       [s.black]: black
-    })} onClick={handleButtonClick}>
-      {children}
+    })} type={type} onClick={handleButtonClick}>
+      <span>
+        {children}
+      </span>
     </button>
   );
 }
 
+Button.defaultProps = {
+  type: 'button'
+}
+
 Button.propTypes = {
   black: PropsTypes.bool,
-  onClick: PropsTypes.func.isRequired
+  onClick: PropsTypes.func,
+  type: PropsTypes.string
 }
 
 export default Button;
