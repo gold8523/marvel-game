@@ -9,13 +9,16 @@ import LoginPage from './pages/LoginPage';
 import Layout from "./components/Layout/Layout";
 import NotFound from "./pages/NotFound/NotFound";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { LikeContext } from "./components/Context/likeContext";
+import { CHARACTER } from "./constants/characters";
 
 import s from "./App.module.scss";
 
 function App() {
   const location = useLocation();
+  const [myLike, setLike] = useState(CHARACTER);
+  // const { like } = useContext(LikeContext);
   
   useEffect(() => {
     const elem = location.hash !== "" && document.getElementById(location.hash.replace('%20', ' '));
@@ -27,10 +30,28 @@ function App() {
       }) : 
       window.scrollTo(0, 0);
   }, [location, location.pathname, location.hash])
+
+  const handleLikeChar = (id) => {
+    console.log('app', id);
+
+    setLike(myLike.map((item) => {
+        if (item.id === id) {
+          item = {
+            ...item,
+            isLike: !item.isLike,
+          };
+        }
+        return item;
+      })
+    );
+
+  }
   
+  // console.log('app', myLike)
   return (
     <LikeContext.Provider value={{
-      like: 'like'
+      myLiked: myLike,
+      onLikeChar: handleLikeChar,
     }}>
       <div className="App">
         <Routes>

@@ -10,27 +10,31 @@ import { CHARACTER } from "../../constants/characters";
 import s from "./MainPage.module.scss";
 
 const MainPage = () => {
-  const [likeChar, setLikeChar] = useState(CHARACTER);
-  const {like} = useContext(LikeContext);
+  // const [likeChar, setLikeChar] = useState(CHARACTER);
+  const {myLiked, onLikeChar} = useContext(LikeContext);
 
   useEffect(() => {
-    console.log('context', like)
+    // console.log('context', like)
   }, [])
 
   const handleClickLike = (id) => {
-    setLikeChar((prevState) =>
-      prevState.map((item) => {
-        if (item.id === id) {
-          item = {
-            ...item,
-            isLike: !item.isLike,
-          };
-        }
-        return item;
-      })
-    );
-  };
 
+    onLikeChar(id);
+
+    // setLikeChar((prevState) =>
+    //   prevState.map((item) => {
+    //     if (item.id === id) {
+    //       item = {
+    //         ...item,
+    //         isLike: !item.isLike,
+    //       };
+    //     }
+    //     return item;
+    //   })
+    // );
+  };
+  
+  // console.log(`main page`, myLiked)
   return (
     <>
       <Slider />
@@ -43,7 +47,7 @@ const MainPage = () => {
             <Heading level={2}>Collect your best five</Heading>
           </div>
           <div className={s.cardWrap}>
-            {likeChar.map((item) => {
+            {myLiked.map((item) => {
               return (
                 <div key={item.id}>
                   <CharacterCard
