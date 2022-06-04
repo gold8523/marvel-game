@@ -15,10 +15,36 @@ import { CHARACTER } from "./constants/characters";
 
 import s from "./App.module.scss";
 
+let likedHeroes = [];
+
 function App() {
   const location = useLocation();
   const [myLike, setLike] = useState(CHARACTER);
-  // const { like } = useContext(LikeContext);
+
+
+  useEffect(() => {
+    if(localStorage.getItem('likedChars')) {
+      const storage = localStorage.getItem(`likedChars`).split(`,`)
+      console.log(storage)
+
+      
+      for(let i = 0; i < storage.length; i++) {
+        console.log('prevstaate', storage[i]);
+        setLike(
+          myLike.map((item) => {
+            if(item.id === Number(storage[i])) {
+              item = {
+                ...item,
+                isLike: !item.isLike
+              }
+            }
+            return item;
+          })
+        )
+      }
+    }
+        
+  }, [])
   
   useEffect(() => {
     const elem = location.hash !== "" && document.getElementById(location.hash.replace('%20', ' '));
@@ -32,7 +58,6 @@ function App() {
   }, [location, location.pathname, location.hash])
 
   const handleLikeChar = (id) => {
-    console.log('app', id);
 
     setLike(myLike.map((item) => {
         if (item.id === id) {
@@ -40,14 +65,21 @@ function App() {
             ...item,
             isLike: !item.isLike,
           };
+
+          if(item.isLike) {
+            likedHeroes.push(item.id);
+          } else {
+            likedHeroes.splice(likedHeroes.indexOf(item.id), 1)
+          }
         }
+        
         return item;
       })
     );
-
+    console.log('arr', likedHeroes);
+    localStorage.setItem('likedChars', likedHeroes)
   }
   
-  // console.log('app', myLike)
   return (
     <LikeContext.Provider value={{
       myLiked: myLike,

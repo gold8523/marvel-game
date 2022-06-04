@@ -8,7 +8,7 @@ import { LikeContext } from "../../components/Context/likeContext";
 
 import s from "./CharactersPage.module.scss";
 
-import { CHARACTER } from "../../constants/characters";
+// import { CHARACTER } from "../../constants/characters";
 
 const CharactersPage = () => {
   // const [likeChar, setLikeChar] = useState(CHARACTER);

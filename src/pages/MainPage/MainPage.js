@@ -5,7 +5,7 @@ import Container from "../../components/Container";
 import CharacterCard from "../../components/CharacterCard";
 
 import { LikeContext } from "../../components/Context/likeContext";
-import { CHARACTER } from "../../constants/characters";
+// import { CHARACTER } from "../../constants/characters";
 
 import s from "./MainPage.module.scss";
 
@@ -34,7 +34,6 @@ const MainPage = () => {
     // );
   };
   
-  // console.log(`main page`, myLiked)
   return (
     <>
       <Slider />
