@@ -1,31 +1,24 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Container from "../../components/Container";
 import Heading from "../../components/Heading";
 import CharacterCard from "../../components/CharacterCard";
 
 import { Outlet, useParams } from "react-router-dom";
+import { LikeContext } from "../../components/Context/likeContext";
 
 import s from "./CharactersPage.module.scss";
 
-import { CHARACTER } from "../../constants/characters";
+// import { CHARACTER } from "../../constants/characters";
 
 const CharactersPage = () => {
-  const [likeChar, setLikeChar] = useState(CHARACTER);
+  // const [likeChar, setLikeChar] = useState(CHARACTER);
+  // const { likeCharContex} = useContext(LikeContext);
+  const {myLiked, onLikeChar} = useContext(LikeContext);
   const {id} = useParams();
   
   const handleClickLike = (id) => {
-    setLikeChar((prevState) =>
-      prevState.map((item) => {
-        if (item.id === id) {
-          item = {
-            ...item,
-            isLike: !item.isLike,
-          };
-        }
-        return item;
-      })
-    );
-  };
+    onLikeChar(id)
+  }
 
   return (
     <>
@@ -41,7 +34,7 @@ const CharactersPage = () => {
                 </Heading>
               </div>
               <div className={s.cardWrap}>
-                {likeChar.map((item) => {
+                {myLiked.map((item) => {
                   return (
                     <div key={item.id}>
                       <CharacterCard
